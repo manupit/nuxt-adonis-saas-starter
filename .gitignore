@@ -1,0 +1,18 @@
+# OS / editors
+.DS_Store
+.idea
+.vscode
+.fleet
+
+# Dependencies (root + workspaces)
+node_modules
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*

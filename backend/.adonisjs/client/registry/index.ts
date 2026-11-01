@@ -1,0 +1,77 @@
+/* eslint-disable prettier/prettier */
+import type { AdonisEndpoint } from '@tuyau/core/types'
+import type { Registry } from './schema.d.ts'
+import type { ApiDefinition } from './tree.d.ts'
+
+const placeholder: any = {}
+
+const routes = {
+  'auth.register': {
+    methods: ["POST"],
+    pattern: '/api/auth/register',
+    tokens: [{"old":"/api/auth/register","type":0,"val":"api","end":""},{"old":"/api/auth/register","type":0,"val":"auth","end":""},{"old":"/api/auth/register","type":0,"val":"register","end":""}],
+    types: placeholder as Registry['auth.register']['types'],
+  },
+  'auth.login': {
+    methods: ["POST"],
+    pattern: '/api/auth/login',
+    tokens: [{"old":"/api/auth/login","type":0,"val":"api","end":""},{"old":"/api/auth/login","type":0,"val":"auth","end":""},{"old":"/api/auth/login","type":0,"val":"login","end":""}],
+    types: placeholder as Registry['auth.login']['types'],
+  },
+  'auth.forgot_password': {
+    methods: ["POST"],
+    pattern: '/api/auth/forgot-password',
+    tokens: [{"old":"/api/auth/forgot-password","type":0,"val":"api","end":""},{"old":"/api/auth/forgot-password","type":0,"val":"auth","end":""},{"old":"/api/auth/forgot-password","type":0,"val":"forgot-password","end":""}],
+    types: placeholder as Registry['auth.forgot_password']['types'],
+  },
+  'auth.reset_password': {
+    methods: ["POST"],
+    pattern: '/api/auth/reset-password',
+    tokens: [{"old":"/api/auth/reset-password","type":0,"val":"api","end":""},{"old":"/api/auth/reset-password","type":0,"val":"auth","end":""},{"old":"/api/auth/reset-password","type":0,"val":"reset-password","end":""}],
+    types: placeholder as Registry['auth.reset_password']['types'],
+  },
+  'auth.logout': {
+    methods: ["POST"],
+    pattern: '/api/auth/logout',
+    tokens: [{"old":"/api/auth/logout","type":0,"val":"api","end":""},{"old":"/api/auth/logout","type":0,"val":"auth","end":""},{"old":"/api/auth/logout","type":0,"val":"logout","end":""}],
+    types: placeholder as Registry['auth.logout']['types'],
+  },
+  'auth.me': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/auth/me',
+    tokens: [{"old":"/api/auth/me","type":0,"val":"api","end":""},{"old":"/api/auth/me","type":0,"val":"auth","end":""},{"old":"/api/auth/me","type":0,"val":"me","end":""}],
+    types: placeholder as Registry['auth.me']['types'],
+  },
+  'account.update': {
+    methods: ["PATCH"],
+    pattern: '/api/account',
+    tokens: [{"old":"/api/account","type":0,"val":"api","end":""},{"old":"/api/account","type":0,"val":"account","end":""}],
+    types: placeholder as Registry['account.update']['types'],
+  },
+  'account.change_password': {
+    methods: ["PUT"],
+    pattern: '/api/account/password',
+    tokens: [{"old":"/api/account/password","type":0,"val":"api","end":""},{"old":"/api/account/password","type":0,"val":"account","end":""},{"old":"/api/account/password","type":0,"val":"password","end":""}],
+    types: placeholder as Registry['account.change_password']['types'],
+  },
+  'account.destroy': {
+    methods: ["DELETE"],
+    pattern: '/api/account',
+    tokens: [{"old":"/api/account","type":0,"val":"api","end":""},{"old":"/api/account","type":0,"val":"account","end":""}],
+    types: placeholder as Registry['account.destroy']['types'],
+  },
+} as const satisfies Record<string, AdonisEndpoint>
+
+export { routes }
+
+export const registry = {
+  routes,
+  $tree: {} as ApiDefinition,
+}
+
+declare module '@tuyau/core/types' {
+  export interface UserRegistry {
+    routes: typeof routes
+    $tree: ApiDefinition
+  }
+}
